@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Elm Window Size</title>
+    <script src="elm.js"></script>
+<link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var app = Elm.Main.init({
+                node: document.getElementById('elm')
+            });
+
+            function sendWindowSize() {
+                app.ports.windowSize.send([window.innerWidth, window.innerHeight]);
+            }
+
+            // Initial window size
+            sendWindowSize();
+
+            // Update window size on resize
+            window.addEventListener('resize', sendWindowSize);
+        });
+    </script>
+</head>
+<body>
+    <div id="elm"></div>
+</body>
+</html>
