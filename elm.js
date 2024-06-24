@@ -11138,6 +11138,9 @@ var $author$project$Main$Tick = function (a) {
 var $author$project$Main$TickMinute = function (a) {
 	return {$: 'TickMinute', a: a};
 };
+var $author$project$Main$TickWaiting = function (a) {
+	return {$: 'TickWaiting', a: a};
+};
 var $author$project$Main$WindowResized = function (a) {
 	return {$: 'WindowResized', a: a};
 };
@@ -11330,7 +11333,7 @@ var $author$project$Main$subscriptions = function (model) {
 			[
 				A2($elm$time$Time$every, 50, $author$project$Main$Tick),
 				A2($elm$time$Time$every, 60 * 1000, $author$project$Main$TickMinute),
-				A2($elm$time$Time$every, 60 * 1000, $author$project$Main$TickMinute),
+				A2($elm$time$Time$every, 60 * 1000, $author$project$Main$TickWaiting),
 				$author$project$Main$windowSize($author$project$Main$WindowResized)
 			]));
 };
@@ -12726,7 +12729,17 @@ var $author$project$Main$update = F2(
 										model = $temp$model;
 										continue update;
 									} else {
-										return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+										return _Utils_Tuple2(
+											_Utils_update(
+												model,
+												{
+													seat1: A2(updateTime, model.seat1, newTime1),
+													seat2: A2(updateTime, model.seat2, newTime2),
+													seat3: A2(updateTime, model.seat3, newTime3),
+													seat4: A2(updateTime, model.seat4, newTime4),
+													seat5: A2(updateTime, model.seat5, newTime5)
+												}),
+											$elm$core$Platform$Cmd$none);
 									}
 								}
 							}
@@ -12811,7 +12824,7 @@ var $author$project$Main$update = F2(
 					var seatAMCT = function (c) {
 						return _Utils_update(
 							c,
-							{active: false, conversation: c.conversation + 1, modal: false, waiting: 30});
+							{active: false, conversation: c.conversation + 1, modal: false, waiting: 1});
 					};
 					var nextDialogue = function (a) {
 						return _Utils_update(

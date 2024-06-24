@@ -18,7 +18,33 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; /* Inklusive Padding */
+    display: inline-block; /* Container passt sich der Größe seines Inhalts an */
+    width: 300px; /* Feste Breite */
+    height: auto; /* Höhe passt sich dem Inhalt an */
+    max-height: 500px; /* Optionale maximale Höhe */
+    overflow-y: auto; /* Vertikales Scrollen aktivieren, falls der Inhalt zu groß ist */
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
 }
+
+.overlay2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    resize: both;
+    overflow: auto;
+    width: 300px; /* Startbreite */
+    height: 250px; /* Starthöhe */
+    overflow-x: auto; /* Horizontales Scrollen aktivieren */
+    white-space: nowrap; /* Verhindern, dass Zeilenumbrüche umgebrochen werden */
+    max-width: 600px;
+    max-height: 400px;
+}
+
 
 .confirm-button {
     background-color: #4CAF50; /* Grün */
